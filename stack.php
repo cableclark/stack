@@ -1,7 +1,5 @@
 <?php
 
-error_reporting(E_ALL ^ E_STRICT);
-
 interface Stack {
   public function push (string $Item);
   public function pop();
@@ -18,6 +16,7 @@ class Records implements Stack {
     $this->limit=$limit;
     $this->stack=[];
   }
+
   public function push (string $item) {
     if (sizeof($this->stack) < $this->limit) {
         array_push($this->stack, $item);
@@ -36,13 +35,14 @@ class Records implements Stack {
 
   public function top(){
     return end($this->stack);
-
   }
+
   public function isEmpty(){
     return empty($this->stack);
   }
-
 }
+
+
 try {
   $myRecordCollection = new Records(20);
   $myRecordCollection->push('Slint-Spiderland');
